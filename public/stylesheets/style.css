@@ -35,7 +35,25 @@ body{
 }
 
 .card{
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(240, 240, 240);
   padding-top: 4em;
   border: none !important;
+  border-radius: 0.5em;
+}
+.goBackHome{
+  position: absolute;
+  margin-top: 0.2em !important;
+  margin-left: 0.2em !important;
+}
+
+.aboutNepal{
+  padding-left: 3em;
+}
+
+.footer{
+  background-color: rgb(240, 240, 240);
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  width: 100%;
+  text-align: center;
 }
