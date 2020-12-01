@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="go-through">
+      <button>States</button>
+      <button>Central</button>
+    </section>
+    <section class="pp">
+      <h3>List of Current Political Parties</h3>
+      <ul>
+        <% data.pp.forEach(p=>{%>
+        <li><a> <%= p %></a></li>
+        <%}); %>
+      </ul>
+    </section>
+  </body>
+</html>

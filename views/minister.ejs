@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ministers</title>
+  </head>
+  <body>
+    <section class="positions">
+      <h3>Information about <%= result[0].Ministry%></h3>
+    </section>
+    <a href="<%= result[0].URL%>">Click to visit the site</a>
+
+    <h5>Positions available in <%= result[0].Ministry%> are:</h5>
+    <ul>
+      <% result.forEach((pos)=>{ const position = pos.Position.replace(/\s+/g,
+      '').toLowerCase() %>
+      <li>
+        <a href="/minister/<%= pos.Ministry_id%>/position/<%=pos.Position%>"
+          ><%=pos.Position%></a
+        >
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<h5>Full Name is: <%= result[0].First_Name%> <%= result[0].Last_Name%></h5> 
+
+SELECT CONCAT_WS(" ",First_Name,Middle_Name,Last_Name) full_name 
+from Candidate Natural Join Position
+WHERE Position = 'Secretary' and Ministry_id = 'MOCIT'
+
+
+- sql connection as dot env

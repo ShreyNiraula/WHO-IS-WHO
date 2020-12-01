@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ministers</title>
+  </head>
+  <body>
+    <section class="provinces">
+      <h3>List of Ministers are:</h3>
+      <ul>
+        <% result.forEach(minister => { %>
+        <li>
+          <a href="/minister/<%= minister.Ministry_id%>"
+            ><%=minister.Ministry%></a
+          >
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+  </body>
+</html>
