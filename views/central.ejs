@@ -3,20 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ministers</title>
+    <title>WHO is WHO - Nepal Politics</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="stylesheets/style.css">
   </head>
   <body>
-    <section class="provinces">
-      <h3>List of Ministers are:</h3>
-      <ul>
-        <% result.forEach(minister => { %>
-        <li>
-          <a href="/minister/<%= minister.Ministry_id%>"
-            ><%=minister.Ministry%></a
-          >
-        </li>
-        <% }) %>
-      </ul>
-    </section>
+    <div class="container-fluid">
+
+      <div class="jumbotron text-center">
+        <h1>WHO is WHO</h1>
+        <img src= "img/NepalFlag.png" height="50px"/>
+        <p class="lead">Nepal Politics</p> 
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <h3>List of Ministers</h3>
+            <ul class="list-group">
+              <% result.forEach(minister => { %>
+                <a href="/minister/<%= minister.Ministry_id%>" class="list-group-item list-group-item-action"
+                  ><%=minister.Ministry%></a
+                >
+              <% }) %>
+            </ul>
+
+          </div>
+          <div class="col-sm-4">
+            <h3>About Nepal</h3>
+            
+
+            <p>
+              Nepal (नेपाल), officially the Federal Democratic Republic of Nepal, is a sovereign country in South Asia.
+            </p>
+            <figure class="figure">
+              <img id="nepalMap" src="img/NepalMap.png" class="figure-img img-fluid rounded" alt="Map og Nepal">
+              <figcaption class="figure-caption text-center">Map of Nepal</figcaption>
+            </figure>
+            <!-- <img id="nepalMap" src = "img/NepalMap.png"/> -->
+            <p>
+              Nepal has a diverse geography, including fertile plains, subalpine forested hills, and eight of the world's ten tallest mountains, including Mount Everest, the highest point on Earth. 
+              Kathmandu is the capital and the largest city.
+            </p>
+            <p>
+              Being federal nation, it has state government as well as the federal goverment. 
+              This project presents the different ministries, chairs and people involved in it.
+            </p>
+            
+          </div>
+        </div>
+    </div>
   </body>
 </html>
