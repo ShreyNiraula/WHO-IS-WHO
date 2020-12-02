@@ -4,6 +4,12 @@
  * Module dependencies.
  */
 
+// DOT ENV
+const dotenv = require("dotenv");
+dotenv.config();
+
+const PORT = process.env.PORT;
+
 var app = require("../app");
 var debug = require("debug")("whoiswho:server");
 var http = require("http");
@@ -12,7 +18,7 @@ var http = require("http");
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "5000");
+var port = normalizePort(process.env.PORT || PORT);
 app.set("port", port);
 
 /**
