@@ -2,11 +2,22 @@ var express = require("express");
 const router = express.Router();
 var db = require("../connections");
 
+// router.get("/:id", (req, res, next) => {
+//   const { id } = req.params; // rename the id as Ministry_id
+//   // here, '${id}' is needed, to make string for sql command itself
+//   // let sql = `SELECT * FROM Ministry JOIN Position on Position.Ministry_id= Ministry.Ministry_id where Ministry.Ministry_id='${id}'`;
+//   let sql = `SELECT *, CONCAT_WS(" ",Candidate.First_Name, Candidate.Middle_Name, Candidate.Last_Name) as FullName FROM Ministry JOIN Position ON Position.Ministry_id= Ministry.Ministry_id JOIN Candidate ON Position.Candidate_id = Candidate.Candidate_id WHERE Ministry.Ministry_id='${id}'`;
+//   db.query(sql, (err, result) => {
+//     if (err) throw err;
+//     console.log("single minister", result);
+//     res.render("minister", { result: result });
+//   });
+// });
 router.get("/:id", (req, res, next) => {
   const { id } = req.params; // rename the id as Ministry_id
   // here, '${id}' is needed, to make string for sql command itself
   // let sql = `SELECT * FROM Ministry JOIN Position on Position.Ministry_id= Ministry.Ministry_id where Ministry.Ministry_id='${id}'`;
-  let sql = `SELECT *, CONCAT_WS(" ",Candidate.First_Name, Candidate.Middle_Name, Candidate.Last_Name) as FullName FROM Ministry JOIN Position ON Position.Ministry_id= Ministry.Ministry_id JOIN Candidate ON Position.Candidate_id = Candidate.Candidate_id WHERE Ministry.Ministry_id='${id}'`;
+  let sql = `SELECT *, CONCAT_WS(" ",Candidate.First_Name, Candidate.Middle_Name, Candidate.Last_Name) as FullName FROM Candidate NATURAL JOIN Position Natural Join Designation where Position.Ministry_id = '${id}' order by Designation.Hierarchy asc`;
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log("single minister", result);

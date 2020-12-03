@@ -29,20 +29,20 @@
         <h2 class = "text-center mb-5">Positions</h2>
           <div class = "position-list">
             
-            <% result.forEach((pos)=>{ const position = pos.Position.replace(/\s+/g,
-              '').toLowerCase() %>
+            <% result.forEach((pos)=>{%>
               
               
             <div class="card" style="width: 16rem;">
-              <img class="card-img-top rounded-circle z-depth-2" src="<%= pos.Photo_URL%>" alt="Card image cap" data-holder-rendered="true">
+              <img class="card-img-top rounded-circle z-depth-2 the-image" src="<%= pos.Photo_URL%>" alt="Card image cap" data-holder-rendered="true">
               <div class="card-body text-center">
                 <h5 class="card-title"><%= pos.FullName%></h5>
                 <h6 class="card-subtitle">Position: <%= pos.Position%></h6>
                 <% if (pos.Department == "General") { %>
-                
+                  
                   <%} else { %>
                   <h6 class = "lead small">Department: <%=pos.Department%></p>
                   <% } %>
+                  <small class='text-center'>Salary: Rs <%= pos.Salary.toLocaleString()%></small>
                 
               </div>
             </div>
