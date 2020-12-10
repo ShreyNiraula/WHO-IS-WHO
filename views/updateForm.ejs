@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHO is WHO - Nepal Politics</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid mb-5">
+      <a href="/" class="btn btn-outline-primary goBackHome" type="button"
+        ><i class="fas fa-home"></i
+      ></a>
+      <div class="jumbotron text-center">
+        <h1>WHO is WHO</h1>
+        <img src="img/NepalFlag.png" height="50px" />
+        <p class="lead">Nepal Politics</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3 class="mb-4 text-center">
+            Update the candidate information for <%= pid %> in <%= id %>
+          </h3>
+        </div>
+        <div class="col-sm-12">
+          <% if (query) { const cid = query.Candidate_id %>
+          <form
+            action="/updated/<%= id %>/<%= pid %>/<%= cid %> "
+            method="POST"
+          >
+            <label for="First_Name">Updated candidate's First Name?</label>
+            <input
+              type="text"
+              name="First_Name"
+              id="First_Name"
+              placeholder="<%= query.First_Name %>"
+            />
+            <label for="Middle_Name">Updated candidate's Name?</label>
+            <input
+              type="text"
+              name="Middle_Name"
+              id="Middle_Name"
+              placeholder="<%= query.Middle_Name %>"
+            />
+            <label for="Last_Name">Updated candidate's Name?</label>
+            <input
+              type="text"
+              name="Last_Name"
+              id="Last_Name"
+              placeholder="<%= query.Last_Name %>"
+            />
+            <label for="Initials">Updated candidate's Initials?</label>
+            <input
+              type="text"
+              name="Initials"
+              id="Initials"
+              placeholder="<%= query.Initials %>"
+            />
+            <label for="Department">Updated Candidate's department?</label>
+            <input
+              type="text"
+              name="Department"
+              id="Department"
+              placeholder="<%= query.Department %>"
+            />
+            <label for="Salary">Updated candidate's salary?</label>
+            <input
+              type="text"
+              name="Salary"
+              id="Salary"
+              placeholder="<%= query.Salary %>"
+            />
+
+            <label for="Photo_URL">Updated candidate's Photo?</label>
+            <input
+              type="text"
+              name="Photo_URL"
+              name="Photo_URL"
+              placeholder="<%= query.Photo_URL %>"
+            />
+            <button type="submit">SUBMIT</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-copyright text-center">© 2020 Copyright</div>
+    </footer>
+    <!-- Footer -->
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/0ff4f7eb6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
