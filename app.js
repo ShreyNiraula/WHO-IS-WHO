@@ -82,10 +82,6 @@ app.post("/updated/:id/:pid/:cid", urlEncodedParser, (req, res, next) => {
     Salary,
     Photo_URL,
   } = req.body;
-  console.log(
-    "the candidate id in /updated/id/pid=++++++++++++++++++++++++++++++++++++++++++++++++++++",
-    Candidate_id
-  );
   let sql = `UPDATE Candidate as c NATURAL JOIN Position as p NATURAL JOIN Designation as d SET c.Candidate_id=${cid}, c.Initials='${Initials}', c.First_Name='${First_Name}', c.Middle_Name='${Middle_Name}', c.Last_Name='${Last_Name}', c.Photo_URL='${Photo_URL}', p.Ministry_id='${id}', p.Position='${pid}', p.Department ='${Department}',  d.Salary='${Salary}'  WHERE p.Ministry_id = '${id}' AND p.Position='${pid}'`;
 
   db.query(sql, (err, result) => {

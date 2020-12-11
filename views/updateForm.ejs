@@ -11,7 +11,7 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
   </head>
   <body>
     <div class="container-fluid mb-5">
@@ -25,78 +25,129 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container my-3">
       <div class="row">
         <div class="col-sm-12">
-          <h3 class="mb-4 text-center">
+          <h4 class="mb-4 text-center">
             Update the candidate information for <%= pid %> in <%= id %>
-          </h3>
+          </h4>
         </div>
-        <div class="col-sm-12">
-          <% if (query) { const cid = query.Candidate_id %>
-          <form
-            action="/updated/<%= id %>/<%= pid %>/<%= cid %> "
-            method="POST"
-          >
-            <label for="First_Name">Updated candidate's First Name?</label>
-            <input
-              type="text"
-              name="First_Name"
-              id="First_Name"
-              placeholder="<%= query.First_Name %>"
-            />
-            <label for="Middle_Name">Updated candidate's Name?</label>
-            <input
-              type="text"
-              name="Middle_Name"
-              id="Middle_Name"
-              placeholder="<%= query.Middle_Name %>"
-            />
-            <label for="Last_Name">Updated candidate's Name?</label>
-            <input
-              type="text"
-              name="Last_Name"
-              id="Last_Name"
-              placeholder="<%= query.Last_Name %>"
-            />
-            <label for="Initials">Updated candidate's Initials?</label>
-            <input
-              type="text"
-              name="Initials"
-              id="Initials"
-              placeholder="<%= query.Initials %>"
-            />
-            <label for="Department">Updated Candidate's department?</label>
-            <input
-              type="text"
-              name="Department"
-              id="Department"
-              placeholder="<%= query.Department %>"
-            />
-            <label for="Salary">Updated candidate's salary?</label>
-            <input
-              type="text"
-              name="Salary"
-              id="Salary"
-              placeholder="<%= query.Salary %>"
-            />
+      </div>
+      <div
+        id="custom-form"
+        style="
+          width: 70%;
+          padding: 2rem;
+          margin: 2rem auto;
+          background-color: #d1d1d1;
+          border-radius: 8px;
+        "
+      >
+        <% if (query) { const cid = query.Candidate_id %>
+        <form action="/updated/<%= id %>/<%= pid %>/<%= cid %> " method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="First_Name">First_Name</label>
+              <input
+                class="form-control"
+                type="text"
+                name="First_Name"
+                id="First_Name"
+                placeholder="<%= query.First_Name %>"
+                value="<%= query.First_Name %>"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="Middle_Name">Middle_Name</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Middle_Name"
+                id="Middle_Name"
+                placeholder="<%= query.Middle_Name %>"
+                value="<%= query.Middle_Name %>"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="Last_Name">Last_Name</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Last_Name"
+                id="Last_Name"
+                placeholder="<%= query.Last_Name %>"
+                value="<%= query.Last_Name %>"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="Initials">Initials</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Initials"
+                id="Initials"
+                placeholder="<%= query.Initials %>"
+                value="<%= query.Initials %>"
+              />
+            </div>
+            <div class="form-group col-md-10">
+              <label for="Photo_URL">Photo URL</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Photo_URL"
+                id="Photo_URL"
+                placeholder="<%= query.Photo_URL %>"
+                value="<%= query.Photo_URL %>"
+              />
+            </div>
+          </div>
 
-            <label for="Photo_URL">Updated candidate's Photo?</label>
-            <input
-              type="text"
-              name="Photo_URL"
-              name="Photo_URL"
-              placeholder="<%= query.Photo_URL %>"
-            />
-            <button type="submit">SUBMIT</button>
-          </form>
-          <% } %>
-        </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="Salary">Salary</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Salary"
+                id="Salary"
+                placeholder="<%= query.Salary %>"
+                value="<%= query.Salary %>"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="Department">Department</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Department"
+                id="Department"
+                placeholder="<%= query.Department %>"
+                value="<%= query.Department %>"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">
+            Update
+          </button>
+        </form>
+        <% } %>
       </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer
+      class="footer"
+      style="
+        background-color: rgb(240, 240, 240);
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        width: 100%;
+        text-align: center;
+      "
+    >
       <div class="footer-copyright text-center">© 2020 Copyright</div>
     </footer>
     <!-- Footer -->
