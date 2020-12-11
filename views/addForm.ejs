@@ -32,49 +32,137 @@
             Fill New Entry for New position in <%= id %>
           </h3>
         </div>
-        <div class="col-sm-12 form-area">
+        <div
+          id="custom-form"
+          style="
+            width: 70%;
+            padding: 2rem;
+            margin: 2rem auto;
+            background-color: #d1d1d1;
+            border-radius: 8px;
+          "
+        >
           <form action="/added/<%= id %>" method="POST">
-            <label for="First_Name">What is Candidate's First Name?</label>
-            <input
-              type="text"
-              name="First_Name"
-              placeholder="Candidate's First Name"
-            />
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="First_Name">First Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="First_Name"
+                  id="First_Name"
+                  required
+                  placeholder="Candidate's First Name"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="Middle_Name">Middle Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Middle_Name"
+                  id="Middle_Name"
+                  required
+                  placeholder="Candidate's Middle Name"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="Last_Name">Last Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Last_Name"
+                  id="Last_Name"
+                  required
+                  placeholder="Candidate's Last Name"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="Initials">Initials</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Initials"
+                  id="Initials"
+                  required
+                  placeholder="Secretary"
+                />
+              </div>
 
-            <label for="Middle_Name">What is Candidate's Middle Name?</label>
-            <input
-              type="text"
-              name="Middle_Name"
-              placeholder="Candidate's Middle Name"
-            />
+              <div class="form-group col-md-5">
+                <label for="Position">Position</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Position"
+                  id="Position"
+                  required
+                  placeholder="Secretary"
+                />
+              </div>
 
-            <label for="Last_Name">What is Candidate's Last Name?</label>
-            <input
-              type="text"
-              name="Last_Name"
-              placeholder="Candidate's Last Name"
-            />
+              <div class="form-group col-md-5">
+                <label for="Department">Department</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Department"
+                  id="Department"
+                  required
+                  placeholder="General"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="Salary">Salary</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Salary"
+                  id="Salary"
+                  required
+                  placeholder="Salary"
+                />
+              </div>
 
-            <label for="Position">What is Candidate's Position?</label>
-            <input type="text" name="Position" placeholder="His Position" />
+              <div class="form-group col-md-9">
+                <label for="Photo_URL">Photo URL</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="Photo_URL"
+                  id="Photo_URL"
+                  required
+                  placeholder="Photo_URL"
+                />
+              </div>
+            </div>
 
-            <label for="Department">What is Candidate's Department?</label>
-            <input type="text" name="Department" placeholder="His Department" />
-
-            <label for="Salary">What is Candidate's Salary?</label>
-            <input type="text" name="Salary" placeholder="His Salary" />
-
-            <label for="Photo_URL">What is Candidate's Photo_URL?</label>
-            <input type="text" name="Photo_URL" placeholder="His Photo URL" />
-
-            <button type="submit">SUBMIT</button>
+            <button
+              type="submit"
+              class="btn btn-secondary btn-lg btn-block mt-3"
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer
+      class="footer"
+      style="
+        background-color: rgb(240, 240, 240);
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        width: 100%;
+        text-align: center;
+      "
+    >
       <div class="footer-copyright text-center">© 2020 Copyright</div>
     </footer>
     <!-- Footer -->
