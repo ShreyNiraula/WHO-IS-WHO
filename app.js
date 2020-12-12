@@ -34,9 +34,57 @@ app.use("/minister", ministerRouter);
 
 // route end point for adding new data
 // eg: /add/MOHP
+// app.get("/add/:id", (req, res, next) => {
+//   console.log("are you even here");
+
+//   const { id } = req.params;
+//   const sql1 = "SELECT DISTINCT Department FROM Position";
+//   const sql2 = "SELECT DISTINCT Position FROM Position";
+//   db.query(sql1)
+//     .then(
+//       (departments) => {
+//         db.query(sql2)
+//           .then(
+//             (positions) => {
+//               res.render("addForm", {
+//                 id: id,
+//                 departments: departments,
+//                 positions: positions,
+//               });
+//             },
+//             (err) => next(err)
+//           )
+//           .catch((err) => {
+//             throw err;
+//           });
+//       },
+//       (err) => next(err)
+//     )
+//     .catch((err) => next(err));
+// });
+
 app.get("/add/:id", (req, res, next) => {
   const { id } = req.params;
-  res.render("addForm", { id: id });
+  const sql1 = "SELECT DISTINCT Department FROM Position";
+  const sql2 = "SELECT DISTINCT Position FROM Position";
+
+  let departments = [];
+  let positions = [];
+
+  db.query(sql1, (err, departments) => {
+    if (err) throw err;
+    departments = departments;
+
+    db.query(sql2, (err, positions) => {
+      if (err) throw err;
+      positions = positions;
+      res.render("addForm", {
+        id: id,
+        departments: departments,
+        positions: positions,
+      });
+    });
+  });
 });
 
 // update the candidate value in minister under certain position
@@ -44,7 +92,18 @@ app.get("/add/:id", (req, res, next) => {
 app.get("/update/:id/:pid", (req, res, next) => {
   const query = req.query;
   const { id, pid } = req.params;
-  res.render("updateForm", { id: id, pid: pid, query: query });
+
+  // extract the total distinct department names
+  let sql = "SELECT DISTINCT Department FROM Position";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.render("updateForm", {
+      id: id,
+      pid: pid,
+      query: query,
+      departments: result,
+    });
+  });
 });
 
 app.post("/added/:id", urlEncodedParser, (req, res, next) => {
@@ -71,9 +130,7 @@ app.post("/added/:id", urlEncodedParser, (req, res, next) => {
 
 app.post("/updated/:id/:pid/:cid", urlEncodedParser, (req, res, next) => {
   const { id, pid, cid } = req.params;
-  console.log("the cidis:", cid);
   const {
-    Candidate_id,
     Initials,
     First_Name,
     Middle_Name,
@@ -86,7 +143,6 @@ app.post("/updated/:id/:pid/:cid", urlEncodedParser, (req, res, next) => {
 
   db.query(sql, (err, result) => {
     if (err) throw err;
-    console.log("Updated Minister", result);
     res.redirect(`/minister/${id}`); // redirect
   });
 });

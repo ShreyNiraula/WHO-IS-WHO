@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="../stylesheets/style.css" />
   </head>
+
   <body>
     <div class="container-fluid mb-5">
       <a href="/" class="btn btn-outline-primary goBackHome" type="button"
@@ -43,7 +44,8 @@
           border-radius: 8px;
         "
       >
-        <% if (query) { const cid = query.Candidate_id %>
+        <% if (query) { const cid = query.Candidate_id; 
+         %>
         <form action="/updated/<%= id %>/<%= pid %>/<%= cid %> " method="POST">
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -64,8 +66,7 @@
                 type="text"
                 name="Middle_Name"
                 id="Middle_Name"
-                placeholder="<%= query.Middle_Name %>"
-                value="<%= query.Middle_Name %>"
+                value = "<%= (query.Middle_Name=='null') ? '':query.Middle_Name %>"
               />
             </div>
             <div class="form-group col-md-4">
@@ -118,15 +119,12 @@
               />
             </div>
             <div class="form-group col-md-6">
-              <label for="Department">Department</label>
-              <input
-                class="form-control"
-                type="text"
-                name="Department"
-                id="Department"
-                placeholder="<%= query.Department %>"
-                value="<%= query.Department %>"
-              />
+              <label for="Salary">Departments</label>
+              <select class="form-control" id="Department" name="Department">
+                <% departments.forEach(item => { %>
+                <option><%= item.Department %></option>
+                <% }) %>
+              </select>
             </div>
           </div>
           <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">
