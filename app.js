@@ -164,6 +164,12 @@ app.get("/delete/:id/:pid", (req, res, next) => {
   });
 });
 
+app.get('/candidate/:cid', (req, res, next)=>{
+  console.log('i dont think i am here')
+  console.log('req params', req.params)
+  res.render('candidate')
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

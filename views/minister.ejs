@@ -60,7 +60,9 @@
               
               
             <div class="card" style="width: 16rem;">
-              <img class="card-img-top rounded-circle z-depth-2 the-image" src="<%= pos.Photo_URL%>" alt="Card image cap" data-holder-rendered="true">
+              <a href="/candidate/<%= pos.Candidate_id%>">
+                <img class="card-img-top rounded-circle z-depth-2 the-image" src="<%= pos.Photo_URL%>" alt="Card image cap" data-holder-rendered="true">
+                </a>
               <div class="card-body text-center">
                 <h5 class="card-title"><%= pos.First_Name%> <%= pos.Middle_Name%> <%= pos.Last_Name%></h5>
                 <h6 class="card-subtitle">Position: <%= pos.Position%></h6>
