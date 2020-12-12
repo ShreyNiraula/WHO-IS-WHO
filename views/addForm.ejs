@@ -62,7 +62,7 @@
                   type="text"
                   name="Middle_Name"
                   id="Middle_Name"
-                  required
+                  
                   placeholder="Candidate's Middle Name"
                 />
               </div>
@@ -87,13 +87,12 @@
                   name="Initials"
                   id="Initials"
                   required
-                  placeholder="Secretary"
                 />
               </div>
 
               <div class="form-group col-md-5">
                 <label for="Salary">Positions</label>
-                <select class="form-control" id="Position">
+                <select class="form-control" id="Position" name="Position">
                   <% positions.forEach(item => { %>
                   <option><%= item.Position %></option>
                   <% }) %>
@@ -102,7 +101,7 @@
 
               <div class="form-group col-md-5">
                 <label for="Salary">Departments</label>
-                <select class="form-control" id="Department">
+                <select class="form-control" id="Department" name="Department">
                   <% departments.forEach(item => { %>
                   <option><%= item.Department %></option>
                   <% }) %>

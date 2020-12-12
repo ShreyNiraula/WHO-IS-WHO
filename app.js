@@ -109,6 +109,7 @@ app.get("/update/:id/:pid", (req, res, next) => {
 app.post("/added/:id", urlEncodedParser, (req, res, next) => {
   const { id, pid } = req.params;
   const {
+    Initials,
     First_Name,
     Middle_Name,
     Last_Name,
@@ -117,8 +118,8 @@ app.post("/added/:id", urlEncodedParser, (req, res, next) => {
     Photo_URL,
   } = req.body;
 
-  let sql = `INSERT INTO Candidate (Candidate_id, First_Name, Middle_Name, Last_Name, Photo_URL)
-  VALUES ('${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}');
+  let sql = `INSERT INTO Candidate (Initials,First_Name, Middle_Name, Last_Name, Photo_URL)
+  VALUES ('${Initials}','${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}');
   `;
 
   db.query(sql, (err, result) => {
