@@ -10,6 +10,7 @@ require("dotenv").config();
 
 var centralgovRouter = require("./routes/centralgov");
 var ministerRouter = require("./routes/ministers");
+var userRouter = require("./routes/admin");
 var addRouter = require("./routes/add");
 const { query } = require("express");
 var app = express();
@@ -28,8 +29,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/", indexRouter);
 // app.use("/states", stategovRouter);
+app.use('/admin', userRouter)
 app.use("/", centralgovRouter);
 app.use("/minister", ministerRouter);
+
 // app.use("/add", addRouter);
 
 // route end point for adding new data
