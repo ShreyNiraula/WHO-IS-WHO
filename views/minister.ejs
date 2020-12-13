@@ -15,6 +15,21 @@
     
     <div class="container-fluid">
       <a href="/" class= "btn btn-outline-primary goBackHome" type="button"><i class="fas fa-home"></i></a>
+      <% if (isLogged[0].isLogged) { %>
+        <form action="/admin/logout" method="POST">
+          <button
+            type="submit"
+            class="btn btn-secondary btn-lg btn-block mt-3"
+          >
+          <i class="fa fa-sign-out"></i></a>
+          </button>
+        </form>
+          <%} else { %>
+            <div></div>
+          <% }
+      %>
+
+
       <div class="jumbotron text-center pb-2">
         <h1>Information about <%= result[0].Ministry%></h1>
         <img src= "../img/NepalEmblem.png" height="50px"/>
@@ -29,14 +44,21 @@
       <div class="container mb-5">
         <h2 class = "text-center mb-5">Positions</h2>
         <div>
-           <a href="/add/<%= result[0].Ministry_id%>" type="button"
-        ><i class="fa fa-plus-circle"></i
-      ></a>
+          <% if (isLogged[0].isLogged) { %>
+           <a href="/add/<%= result[0].Ministry_id%>" type="button"><i class="fa fa-plus-circle"></i></a>
+          <%} else { %>
+            <div></div>
+          <% } %>
         </div>
        
           <div class = "position-list">
             
             <% result.forEach((pos)=>{
+
+              // var isPwd = false;
+              // if (typeof localStorage !== 'undefined') {
+              //   isPwd = localStorage.getItem("isPwd");
+              // } 
                             
             let params = {
                 Candidate_id: pos.Candidate_id,
@@ -67,19 +89,37 @@
                 <h5 class="card-title"><%= pos.First_Name%> <%= pos.Middle_Name%> <%= pos.Last_Name%></h5>
                 <h6 class="card-subtitle">Position: <%= pos.Position%></h6>
                 <% if (pos.Department == "General") { %>
-                  
-                  <%} else { %>
+                    <div></div>
+                  <%} else 
+                { %>
                   <h6 class = "lead small">Department: <%=pos.Department%></p>
-                  <% } %>
+                <% } %>
+                
+
+
+                <% if (isLogged[0].isLogged) { %>
                   <small class='text-center'>Salary: Rs <%= pos.Salary.toLocaleString()%></small>
+              <%} else { %>
+                <div></div>
+              <% } %>
 
               </div>
-            <a href="/update/<%= result[0].Ministry_id%>/<%= pos.Position %>?<%=qs%>" type="button">
-              <i class="fa fa-pencil"></i>
-            </a>
-            <a href="/delete/<%= result[0].Ministry_id%>/<%= pos.Position %>" type="button">
-              <i class="fa fa-trash"></i>
-            </a>
+
+              <% if (isLogged[0].isLogged) { %>
+                <a href="/update/<%= result[0].Ministry_id%>/<%= pos.Position %>?<%=qs%>" type="button">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              <%} else { %>
+                  <div></div>
+              <% } %>
+
+              <% if (isLogged[0].isLogged) { %>
+                <a href="/delete/<%= result[0].Ministry_id%>/<%= pos.Position %>" type="button">
+                  <i class="fa fa-trash"></i>
+                </a>
+              <%} else { %>
+                  <div></div>
+              <% } %>
             </div>
 
             <% }) %>

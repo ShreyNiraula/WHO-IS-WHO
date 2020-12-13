@@ -8,10 +8,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
 
-var centralgovRouter = require("./routes/centralgov");
-var ministerRouter = require("./routes/ministers");
-var userRouter = require("./routes/admin");
-var addRouter = require("./routes/add");
+var centralgovRouter = require("./routes/HomePage/centralgov");
+var ministerRouter = require("./routes/Ministry/ministers");
+var userRouter = require("./routes/Admin/admin");
+var addRouter = require("./routes/PositionCRUD/add");
+var updateRouter = require("./routes/PositionCRUD/update");
+var deleteRouter = require("./routes/PositionCRUD/delete");
 const { query } = require("express");
 var app = express();
 
@@ -27,148 +29,14 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/", indexRouter);
-// app.use("/states", stategovRouter);
-app.use('/admin', userRouter)
 app.use("/", centralgovRouter);
+app.use('/admin', userRouter)
 app.use("/minister", ministerRouter);
+app.use("/add", addRouter);
+app.use("/update", updateRouter);
+app.use("/delete", deleteRouter);
 
-// app.use("/add", addRouter);
 
-// route end point for adding new data
-// eg: /add/MOHP
-// app.get("/add/:id", (req, res, next) => {
-//   console.log("are you even here");
-
-//   const { id } = req.params;
-//   const sql1 = "SELECT DISTINCT Department FROM Position";
-//   const sql2 = "SELECT DISTINCT Position FROM Position";
-//   db.query(sql1)
-//     .then(
-//       (departments) => {
-//         db.query(sql2)
-//           .then(
-//             (positions) => {
-//               res.render("addForm", {
-//                 id: id,
-//                 departments: departments,
-//                 positions: positions,
-//               });
-//             },
-//             (err) => next(err)
-//           )
-//           .catch((err) => {
-//             throw err;
-//           });
-//       },
-//       (err) => next(err)
-//     )
-//     .catch((err) => next(err));
-// });
-
-app.get("/add/:id", (req, res, next) => {
-  const { id } = req.params;
-  const sql1 = "SELECT DISTINCT Department FROM Position";
-  const sql2 = "SELECT DISTINCT Position FROM Position";
-
-  let departments = [];
-  let positions = [];
-
-  db.query(sql1, (err, departments) => {
-    if (err) throw err;
-    departments = departments;
-
-    db.query(sql2, (err, positions) => {
-      if (err) throw err;
-      positions = positions;
-      res.render("addForm", {
-        id: id,
-        departments: departments,
-        positions: positions,
-      });
-    });
-  });
-});
-
-// update the candidate value in minister under certain position
-// eg: update / MOHP / secretary;
-app.get("/update/:id/:pid", (req, res, next) => {
-  const query = req.query;
-  const { id, pid } = req.params;
-
-  // extract the total distinct department names
-  let sql = "SELECT DISTINCT Department FROM Position";
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.render("updateForm", {
-      id: id,
-      pid: pid,
-      query: query,
-      departments: result,
-    });
-  });
-});
-
-app.post("/added/:id", urlEncodedParser, (req, res, next) => {
-  const { id, pid } = req.params;
-  const {
-    Initials,
-    First_Name,
-    Middle_Name,
-    Last_Name,
-    Department,
-    Salary,
-    Photo_URL,
-  } = req.body;
-
-  let sql = `INSERT INTO Candidate (Initials,First_Name, Middle_Name, Last_Name, Photo_URL)
-  VALUES ('${Initials}','${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}');
-  `;
-
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log("added Minister", result);
-    res.redirect(`/minister/${id}`); // redirect
-  });
-});
-
-app.post("/updated/:id/:pid/:cid", urlEncodedParser, (req, res, next) => {
-  const { id, pid, cid } = req.params;
-  const {
-    Initials,
-    First_Name,
-    Middle_Name,
-    Last_Name,
-    Department,
-    Salary,
-    Photo_URL,
-  } = req.body;
-  let sql = `UPDATE Candidate as c NATURAL JOIN Position as p NATURAL JOIN Designation as d SET c.Candidate_id=${cid}, c.Initials='${Initials}', c.First_Name='${First_Name}', c.Middle_Name='${Middle_Name}', c.Last_Name='${Last_Name}', c.Photo_URL='${Photo_URL}', p.Ministry_id='${id}', p.Position='${pid}', p.Department ='${Department}',  d.Salary='${Salary}'  WHERE p.Ministry_id = '${id}' AND p.Position='${pid}'`;
-
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.redirect(`/minister/${id}`); // redirect
-  });
-});
-
-app.get("/delete/:id/:pid", (req, res, next) => {
-  const { id, pid } = req.params;
-  let sql = `DELETE c,p FROM Candidate as c 
-  NATURAL JOIN Position as p 
-  NATURAL JOIN Designation as d 
-  WHERE p.Ministry_id = '${id}' AND p.Position='${pid}';
-  `;
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.redirect(`/minister/${id}`); // redirect
-  });
-});
-
-app.get('/candidate/:cid', (req, res, next)=>{
-  console.log('i dont think i am here')
-  console.log('req params', req.params)
-  res.render('candidate')
-})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

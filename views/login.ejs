@@ -26,15 +26,15 @@
             border-radius: 8px;
           "
         >
-          <form method="POST">
+          <form action="/admin/" method="POST">
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="First_Name">password</label>
+              <div class="form-group col-md-12">
+                <label for="AdminPwd">Admin Password</label>
                 <input
                   class="form-control"
                   type="password"
-                  name="Password"
-                  id="Password"
+                  name="AdminPwd"
+                  id="AdminPwd"
                   required
                 />
               </div>
@@ -44,7 +44,7 @@
               type="submit"
               class="btn btn-secondary btn-lg btn-block mt-3"
             >
-              Submit
+              Login
             </button>
           </form>
         </div>
