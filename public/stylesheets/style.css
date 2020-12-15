@@ -61,3 +61,17 @@ body {
   width: 100%;
   text-align: center;
 }
+
+.updateDeleteCandidate{
+  display: flex;
+  justify-content: space-between;
+}
+
+.editCandidate{
+  margin-left: 1em;
+  margin-bottom: 1rem;
+}
+.deleteCandidate{
+   margin-right:1em;
+   margin-bottom: 1em;
+}

@@ -42,14 +42,15 @@
       </div>
 
       <div class="container mb-5">
-        <h2 class = "text-center mb-5">Positions</h2>
-        <div>
-          <% if (isLogged[0].isLogged) { %>
-           <a href="/add/<%= result[0].Ministry_id%>" type="button"><i class="fa fa-plus-circle"></i></a>
-          <%} else { %>
-            <div></div>
-          <% } %>
-        </div>
+        <h2 class = "text-center mb-5">Positions
+            <% if (isLogged[0].isLogged) { %>
+             <a href="/add/<%= result[0].Ministry_id%>" type="button"><i class="fa fa-plus-circle"></i></a>
+            <%} else { %>
+              <div></div>
+            <% } %>
+
+        </h2>
+        
        
           <div class = "position-list">
             
@@ -104,22 +105,26 @@
               <% } %>
 
               </div>
-
-              <% if (isLogged[0].isLogged) { %>
-                <a href="/update/<%= result[0].Ministry_id%>/<%= pos.Position %>?<%=qs%>" type="button">
-                  <i class="fa fa-pencil"></i>
-                </a>
-              <%} else { %>
-                  <div></div>
-              <% } %>
-
-              <% if (isLogged[0].isLogged) { %>
-                <a href="/delete/<%= result[0].Ministry_id%>/<%= pos.Position %>" type="button">
-                  <i class="fa fa-trash"></i>
-                </a>
-              <%} else { %>
-                  <div></div>
-              <% } %>
+              <div class = "updateDeleteCandidate">
+                <div class="editCandidate">
+                  <% if (isLogged[0].isLogged) { %>
+                    <a href="/update/<%= result[0].Ministry_id%>/<%= pos.Position %>?<%=qs%>" type="button">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  <%} else { %>
+                      <div></div>
+                  <% } %>
+                </div>
+                <div class="deleteCandidate">
+                  <% if (isLogged[0].isLogged) { %>
+                    <a href="/delete/<%= result[0].Ministry_id%>/<%= pos.Position %>" type="button">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                  <%} else { %>
+                      <div></div>
+                  <% } %>
+              </div>
+            </div>
             </div>
 
             <% }) %>
