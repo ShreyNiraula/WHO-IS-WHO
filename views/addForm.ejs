@@ -11,7 +11,7 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <div class="container-fluid mb-5">
@@ -20,7 +20,7 @@
       ></a>
       <div class="jumbotron text-center">
         <h1>WHO is WHO</h1>
-        <img src="img/NepalFlag.png" height="50px" />
+        <img src="/img/NepalEmblem.png" height="50px" />
         <p class="lead">Nepal Politics</p>
       </div>
     </div>
@@ -32,16 +32,7 @@
             Fill New Entry for New position in <%= id %>
           </h3>
         </div>
-        <div
-          id="custom-form"
-          style="
-            width: 70%;
-            padding: 2rem;
-            margin: 2rem auto;
-            background-color: #d1d1d1;
-            border-radius: 8px;
-          "
-        >
+        <div id="custom-form">
           <form action="/add/<%= id %>" method="POST">
             <div class="form-row">
               <div class="form-group col-md-4">
@@ -146,16 +137,7 @@
     </div>
 
     <!-- Footer -->
-    <footer
-      class="footer"
-      style="
-        background-color: rgb(240, 240, 240);
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
-        width: 100%;
-        text-align: center;
-      "
-    >
+    <footer class="footer">
       <div class="footer-copyright text-center">© 2020 Copyright</div>
     </footer>
     <!-- Footer -->

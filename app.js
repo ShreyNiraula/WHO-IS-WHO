@@ -2,8 +2,6 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var db = require("./connections");
-
-var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
@@ -14,6 +12,7 @@ var userRouter = require("./routes/Admin/admin");
 var addRouter = require("./routes/PositionCRUD/add");
 var updateRouter = require("./routes/PositionCRUD/update");
 var deleteRouter = require("./routes/PositionCRUD/delete");
+
 const { query } = require("express");
 var app = express();
 
@@ -24,8 +23,6 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
-// app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 

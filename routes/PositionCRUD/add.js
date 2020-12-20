@@ -4,6 +4,8 @@ var db = require("../../connections");
 var bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
+const { v4: uuidv4 } = require('uuid');
+
 
 
 // route for adding new candidate
@@ -35,25 +37,37 @@ router.get("/:id", (req, res, next) => {
 
 // route to post added candidate and redirect to minister page
 router.post("/:id", urlEncodedParser, (req, res, next) => {
-    const { id, pid } = req.params;
+    const { id } = req.params;
     const {
-        Initials,
-        First_Name,
-        Middle_Name,
-        Last_Name,
-        Department,
-        Salary,
-        Photo_URL,
+      First_Name,
+      Middle_Name,
+      Last_Name,
+      Initials,
+      Position,
+      Department,
+      Photo_URL,
     } = req.body;
 
-    // TODO: incomplete
-    let sql = `INSERT INTO Candidate (Initials,First_Name, Middle_Name, Last_Name, Photo_URL)
-    VALUES ('${Initials}','${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}');
-    `;
+  
+    let sql1 = `SELECT Candidate_id FROM Candidate ORDER BY Candidate_id DESC LIMIT 1`
+    db.query(sql1, (err, highestId) => {
+      if (err) throw err;
 
-    db.query(sql, (err, result) => {
+      const latestId = highestId[0].Candidate_id  // string
+      const newId = Number(latestId)+1
+
+      let sql2 = `INSERT INTO Candidate (Candidate_id, Initials, First_Name, Middle_Name, Last_Name, Photo_URL) VALUES ('${newId}','${Initials}','${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}')`;
+
+      db.query(sql2, (err, result)=>{
         if (err) throw err;
-        res.redirect(`/minister/${id}`); // redirect
+        var sql3_data  = {Ministry_id:id, Position: Position, Department:Department, Candidate_id:newId };
+        let sql3 = `INSERT INTO Position SET ?`
+        db.query(sql3, sql3_data, (err, result)=>{
+          if (err) throw err;
+          res.redirect(`/minister/${id}`); // redirect
+        })
+      })
+     
     });
 });
 
