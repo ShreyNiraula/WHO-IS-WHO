@@ -38,7 +38,7 @@
                   <h4>Current Belongings</h4>
                   <ul>
                     <% candidateInfo.forEach(cInfo => { %>
-                            <li><a href="/minister/<%= cInfo.Ministry_id %>"> <%= cInfo.Ministry_id %> (<%= cInfo.Department %>) </a></li>
+                            <li><a href="/minister/<%= cInfo.Ministry_id %>"> <%= cInfo.Ministry_id %> (<%= cInfo.Department %>) as <%= cInfo.Position %> </a></li>
                       <% }) %>
                   </ul>
             </div>
