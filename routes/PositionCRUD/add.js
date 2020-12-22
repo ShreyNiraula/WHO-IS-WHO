@@ -62,6 +62,9 @@ router.post("/:id", urlEncodedParser, (req, res, next) => {
         if (err) throw err;
         var sql3_data  = {Ministry_id:id, Position: Position, Department:Department, Candidate_id:newId };
         let sql3 = `INSERT INTO Position SET ?`
+
+        // DOES NOT WORK :)
+        // let sql3 = `INSERT INTO Position (Ministry_id, Position, Department, Candidate_id) VALUES ('${id}','${Position}','${Department}',${newId})`
         db.query(sql3, sql3_data, (err, result)=>{
           if (err) throw err;
           res.redirect(`/minister/${id}`); // redirect

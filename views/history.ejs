@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHO is WHO - Nepal Politics</title>
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid mb-5">
+      <a href="/" class="btn btn-outline-primary goBackHome" type="button"
+        ><i class="fas fa-home"></i
+      ></a>
+      <div class="jumbotron text-center">
+        <h1>WHO is WHO</h1>
+        <img src="/img/NepalFlag.png" height="50px" />
+        <p class="lead">Nepal Politics</p>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <h3 class="mb-4 text-center">Former Ministers in <%= ministryName[0].Ministry %>(<%= id %>) </h3>
+              <div class='history-table'>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Middle Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">In Office Since</th>
+                      <th scope="col">Left Office</th>
+                    </tr>
+                  </thead>
+                  <% histories.forEach(history => { %>
+                    <tbody>
+                      <tr>
+                        <td><img class="card-img-top rounded-circle z-depth-2 the-image" style="height:40px; width:40px;" src="<%= history.Photo_URL%>" alt="Card image cap" data-holder-rendered="true"></td>
+                        <td><%= history.First_Name %></td>
+                        <td><%= history.Middle_Name %> </td>
+                        <td><%= history.Last_Name %> </td>
+                        <td><%= history.In_Office_Since %> </td>
+                        <td><%= history.Left_Office %> </td>
+                      </tr>
+                    </tbody>
+                  <% }) %>
+                  </table>
+                </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-copyright text-center">© 2020 Copyright</div>
+    </footer>
+    <!-- Footer -->
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/0ff4f7eb6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
