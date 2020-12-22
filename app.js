@@ -10,6 +10,7 @@ var centralgovRouter = require("./routes/HomePage/centralgov");
 var ministerRouter = require("./routes/Ministry/ministers");
 var userRouter = require("./routes/Admin/admin");
 var addRouter = require("./routes/PositionCRUD/add");
+var candidateRouter = require("./routes/CandidateCRUD/candidate");
 var historyRouter = require("./routes/History/history");
 var updateRouter = require("./routes/PositionCRUD/update");
 var deleteRouter = require("./routes/PositionCRUD/delete");
@@ -31,6 +32,7 @@ app.use("/", centralgovRouter);
 app.use('/admin', userRouter)
 app.use("/minister", ministerRouter);
 app.use("/add", addRouter);
+app.use("/candidate", candidateRouter);
 app.use("/history", historyRouter);
 app.use("/update", updateRouter);
 app.use("/delete", deleteRouter);

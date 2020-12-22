@@ -25,11 +25,11 @@
         <p class="lead">Nepal Politics</p>
       </div>
 
-      <div class="container">
+      <div class="container ">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-8 text-center">
             <h3 class="mb-4 text-center">Former Ministers in <%= ministryName[0].Ministry %>(<%= id %>) </h3>
-              <div class='history-table'>
+              <div class='history-table '>
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -44,7 +44,7 @@
                   <% histories.forEach(history => { %>
                     <tbody>
                       <tr>
-                        <td><img class="card-img-top rounded-circle z-depth-2 the-image" style="height:40px; width:40px;" src="<%= history.Photo_URL%>" alt="Card image cap" data-holder-rendered="true"></td>
+                        <td><a href="/candidate/<%= history.Candidate_id %>"><img  class="card-img-top rounded-circle z-depth-2 the-image" style="height:40px; width:40px;" src="<%= history.Photo_URL%>" alt="Card image cap" data-holder-rendered="true"></a></td>
                         <td><%= history.First_Name %></td>
                         <td><%= history.Middle_Name %> </td>
                         <td><%= history.Last_Name %> </td>

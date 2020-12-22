@@ -64,7 +64,7 @@
               const qs = Object.keys(params).map((key)=>`${key}=${params[key]}`).join('&');
               %>
             <div class="card" style="width: 16rem;">
-              <a href="/candidate/<%= pos.Candidate_id%>">
+              <a href="/candidate/<%= pos.Candidate_id%>?<%=ministryInfo[0].Ministry%>">
                 <img class="card-img-top rounded-circle z-depth-2 the-image" src="<%= pos.Photo_URL%>" alt="Card image cap" data-holder-rendered="true">
                 </a>
               <div class="card-body text-center">
