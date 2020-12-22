@@ -33,12 +33,11 @@
           </div>
           <div class="col-sm-6 text-center">
             <%if (candidateInfo.length > 0) { %>
-              <div class="belongings my-3">
-
+              <div class="belongings my-3 jumbotron py-3">
                   <h4>Current Belongings</h4>
                   <ul>
                     <% candidateInfo.forEach(cInfo => { %>
-                            <li><a href="/minister/<%= cInfo.Ministry_id %>"> <%= cInfo.Ministry_id %> (<%= cInfo.Department %>) as <%= cInfo.Position %> </a></li>
+                            <li><a style="text-decoration: none; color:rgb(83, 83, 83)" href="/minister/<%= cInfo.Ministry_id %>"> <%= cInfo.Ministry_id %> (<%= cInfo.Department %>) as <%= cInfo.Position %> </a></li>
                       <% }) %>
                   </ul>
             </div>
@@ -60,7 +59,7 @@
                         <% historyInfo.forEach(hInfo => { %>
                             <tbody>
                             <tr>
-                                <td><a href="/minister/<%= hInfo.Ministry_id %>"> <%= hInfo.Ministry_id %></a></td>
+                                <td><a style="text-decoration: none; color:black" href="/minister/<%= hInfo.Ministry_id %>"> <%= hInfo.Ministry_id %></a></td>
                                 <td><%= hInfo.In_Office_Since %> </td>
                                 <td><%= hInfo.Left_Office %> </td>
                             </tr>
