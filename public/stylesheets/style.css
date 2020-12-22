@@ -23,6 +23,11 @@ body {
   justify-content: space-between;
   min-height: 50vh;
 }
+
+.jumboContent{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .card-subtitle {
   color: blue;
 }
@@ -43,11 +48,7 @@ body {
   border: none !important;
   border-radius: 0.5em;
 }
-.goBackHome {
-  position: absolute;
-  margin-top: 0.2em !important;
-  margin-left: 0.2em !important;
-}
+
 
 .aboutNepal {
   padding-left: 3em;
@@ -72,7 +73,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 .editCandidate{
   margin-left: 1em;
   margin-bottom: 1rem;
@@ -81,3 +81,25 @@ body {
    margin-right:1em;
    margin-bottom: 1em;
 }
+
+.topOptions{
+  display: flex;
+  justify-content: space-between;
+  /* position: absolute; */
+}
+
+
+.home-button{
+  /* position: absolute; */
+  margin-top: 0.1em !important;
+  margin-left: 0.1em !important;
+  margin-bottom: 0.1rem;
+}
+
+.logout-button{
+  /* position: absolute; */
+  margin-top: 0.1em !important;
+  margin-right: 0.1em !important;
+  margin-bottom: 0.1em;
+}
+

@@ -11,32 +11,44 @@
   </head>
   <body>
     <div class="container-fluid">
-      <a href="/" class= "btn btn-outline-primary goBackHome" type="button"><i class="fas fa-home"></i></a>
-      <% if (isLogged[0].isLogged) { %>
-        <form action="/admin/logout" method="POST">
-          <button
-            type="submit"
-            class="btn btn-secondary btn-lg btn-block mt-3"
-          >
-          <i class="fa fa-sign-out"></i>
-          </button>
-        </form>
-          <%} else { %>
-            <div></div>
-          <% }
-      %>
-      <div class="jumbotron text-center pb-2">
-        <div>More detail on the Minister History</div>
-        <a href='/history/<%= result[0].Ministry_id%>'>Click to see history</a>
-        
-        <h1><%= ministryInfo[0].Ministry%></h1>
-        <img src= "/img/NepalEmblem.png" height="50px"/>
-        <p class="lead">also known as <%= result[0].Ministry_id%> <% if (ministryInfo[0].Established_Date) { %> , was established in <%= ministryInfo[0].Established_Date%> <%} %></p> 
 
-        <hr class="my-4">
-        <p>
-          <strong>Official Website:  <a href="<%= result[0].URL%>"><%= ministryInfo[0].URL%></a></strong>
-        </p>
+      
+      <div class="jumbotron text-center pb-2 pt-0 pl-0 pr-0">
+
+        <div class="topOptions">
+          <div class = "home-button">
+            <a href="/" class= "btn btn-outline-primary" type="button"><i class="fas fa-home"></i></a>
+          </div>
+          <div class = "logout-button">
+            <% if (isLogged[0].isLogged) { %>
+              <form action="/admin/logout" method="POST">
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary"
+                >
+                <i class="fa fa-sign-out"></i>
+                </button>
+              </form>
+                <%} else { %>
+                  <div></div>
+                <% }
+            %>
+          </div>
+        </div>
+      
+        <div class = "jumboContent">
+          <div>More detail on the Minister History</div>
+          <a href='/history/<%= result[0].Ministry_id%>'>Click to see history</a>
+          
+          <h1><%= ministryInfo[0].Ministry%></h1>
+          <img src= "/img/NepalEmblem.png" height="50px"/>
+          <p class="lead">also known as <%= result[0].Ministry_id%> <% if (ministryInfo[0].Established_Date) { %> , was established in <%= ministryInfo[0].Established_Date%> <%} %></p> 
+
+          <hr class="my-4">
+          <p>
+            <strong>Official Website:  <a href="<%= result[0].URL%>"><%= ministryInfo[0].URL%></a></strong>
+          </p>
+        </div>
       </div>
       <div class="container mb-5">
         <h2 class = "text-center mb-5">Positions
