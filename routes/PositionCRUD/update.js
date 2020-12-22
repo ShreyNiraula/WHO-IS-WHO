@@ -33,7 +33,6 @@ router.post("/:id/:pid/:cid", urlEncodedParser, (req, res, next) => {
       Middle_Name,
       Last_Name,
       Department,
-      Salary,
       Photo_URL,
     } = req.body;
 

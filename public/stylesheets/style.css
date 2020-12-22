@@ -20,7 +20,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, 16rem);
   grid-gap: 1rem;
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: 50vh;
 }
 .card-subtitle {
