@@ -48,13 +48,13 @@ router.post("/:id", urlEncodedParser, (req, res, next) => {
       Photo_URL,
     } = req.body;
 
-  
     let sql1 = `SELECT Candidate_id FROM Candidate ORDER BY Candidate_id DESC LIMIT 1`
     db.query(sql1, (err, highestId) => {
       if (err) throw err;
 
       const latestId = highestId[0].Candidate_id  // string
       const newId = Number(latestId)+1
+
 
       let sql2 = `INSERT INTO Candidate (Candidate_id, Initials, First_Name, Middle_Name, Last_Name, Photo_URL) VALUES ('${newId}','${Initials}','${First_Name}', '${Middle_Name}', '${Last_Name}', '${Photo_URL}')`;
 
@@ -63,14 +63,11 @@ router.post("/:id", urlEncodedParser, (req, res, next) => {
         var sql3_data  = {Ministry_id:id, Position: Position, Department:Department, Candidate_id:newId };
         let sql3 = `INSERT INTO Position SET ?`
 
-        // DOES NOT WORK :)
-        // let sql3 = `INSERT INTO Position (Ministry_id, Position, Department, Candidate_id) VALUES ('${id}','${Position}','${Department}',${newId})`
         db.query(sql3, sql3_data, (err, result)=>{
           if (err) throw err;
           res.redirect(`/minister/${id}`); // redirect
         })
       })
-     
     });
 });
 
