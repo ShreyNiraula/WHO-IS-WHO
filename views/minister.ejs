@@ -37,8 +37,6 @@
         </div>
       
         <div class = "jumboContent">
-          <div>More detail on the Minister History</div>
-          <a href='/history/<%= result[0].Ministry_id%>'>Click to see history</a>
           
           <h1><%= ministryInfo[0].Ministry%></h1>
           <img src= "/img/NepalEmblem.png" height="50px"/>
@@ -51,7 +49,9 @@
         </div>
       </div>
       <div class="container mb-5">
-        <h2 class = "text-center mb-5">Positions
+        <div class = "text-center my-1"><h4><a style="text-decoration: none; color:rgb(83, 83, 83)" href='/history/<%= result[0].Ministry_id%>'>Past Ministers of <%= result[0].Ministry_id%></h4></a></div>
+        
+        <h2 class = " mt-3 mb-5">Positions
             <% if (isLogged[0].isLogged) { %>
              <a href="/add/<%= result[0].Ministry_id%>" type="button"><i class="fa fa-plus-circle"></i></a>
             <%} else { %>

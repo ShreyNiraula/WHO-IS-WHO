@@ -44,7 +44,7 @@
                   <% histories.forEach(history => { %>
                     <tbody>
                       <tr>
-                        <td><a href="/candidate/<%= history.Candidate_id %>"><img  class="card-img-top rounded-circle z-depth-2 the-image" style="height:40px; width:40px;" src="<%= history.Photo_URL%>" alt="Card image cap" data-holder-rendered="true"></a></td>
+                        <td><a href="/candidate/<%= history.Candidate_id %>"><img  class="card-img-top rounded-circle z-depth-2 the-image" style="height:40px; width:40px;" src="<%= history.Photo_URL%>" alt="<%= history.First_Name %>" data-holder-rendered="true"></a></td>
                         <td><%= history.First_Name %></td>
                         <td><%= history.Middle_Name %> </td>
                         <td><%= history.Last_Name %> </td>

@@ -14,7 +14,7 @@ router.get("/:id/:pid", (req, res, next) => {
     WHERE p.Ministry_id = '${id}' AND p.Position='${pid}';
     `;
     db.query(sql, (err, result) => {
-      console.log('the deleted result is:', result)
+      console.log('the deleted result is:', result) // useless info
       if (err) throw err;
       res.redirect(`/minister/${id}`); // redirect
     });
