@@ -49,9 +49,8 @@
         </div>
       </div>
       <div class="container mb-5">
-        <div class = "text-center my-1"><h4><a style="text-decoration: none; color:rgb(83, 83, 83)" href='/history/<%= result[0].Ministry_id%>'>Past Ministers of <%= result[0].Ministry_id%></h4></a></div>
         
-        <h2 class = " mt-3 mb-5">Positions
+        <h2 class = "text-center mt-3 mb-5">Positions
             <% if (isLogged[0].isLogged) { %>
              <a href="/add/<%= result[0].Ministry_id%>" type="button"><i class="fa fa-plus-circle"></i></a>
             <%} else { %>
@@ -82,17 +81,30 @@
               <div class="card-body text-center">
                 <h5 class="card-title"><%= pos.First_Name%> <%= pos.Middle_Name%> <%= pos.Last_Name%></h5>
                 <h6 class="card-subtitle">Position: <%= pos.Position%></h6>
+                
+
                 <% if (pos.Department == "General") { %>
                     <div></div>
                   <%} else 
                 { %>
-                  <h6 class = "lead small">Department: <%=pos.Department%></p>
+                  <h6 class = "lead small">Department: <%=pos.Department%></h6>
                 <% } %>
+
+                <% if (pos.Position === "Minister" || pos.Position === "Prime Minister" || pos.Position === "Deputy Prime Minister") { %>
+                  <div class = "text-center my-3"><a style="text-decoration: none; color:rgb(83, 83, 83)" href='/history/<%= result[0].Ministry_id%>'>Click to see past ministers</a></div>
+                  <%} else 
+                { %>
+                  <div></div>
+              <% } %>
+
+              
                 <% if (isLogged[0].isLogged) { %>
                   <small class='text-center'>Salary: Rs <%= pos.Salary.toLocaleString()%></small>
               <%} else { %>
                 <div></div>
               <% } %>
+
+
 
               </div>
               <div class = "updateDeleteCandidate">
